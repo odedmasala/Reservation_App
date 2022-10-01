@@ -2,7 +2,7 @@ import React from "react";
 
 const Featured = () => {
   return (
-    <div className="w-full p-2 max-w-6xl flex justify-center gap-[20px]">
+    <div className="w-full p-2 max-w-5xl flex justify-center gap-[20px]">
       <div className="h-64 flex-1 relative text-white rounded-xl overflow-hidden">
         <img
           src="https://cf.bstatic.com/xdata/images/city/max500/957801.webp?k=a969e39bcd40cdcc21786ba92826063e3cb09bf307bcfeac2aa392b838e9b7a5&o="

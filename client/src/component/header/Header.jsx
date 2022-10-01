@@ -46,9 +46,9 @@ const Header = ({ type }) => {
     navigate("/hotels", { state: { destination, date, options } });
   };
   const headerContainer =
-    "w-[100%] max-w-6xl bg-[#003580] p-4 mt-[20px] mb-[100px]";
+    "w-[100%] max-w-5xl bg-[#003580] p-4 mt-[20px] mb-[100px]";
   const headerContainerListMode =
-    " w-[100%] max-w-6xl bg-[#003580] p-4 mt-[20px]";
+    " w-[100%] max-w-5xl bg-[#003580] p-4 mt-[20px]";
 
 
   return (
