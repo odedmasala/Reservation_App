@@ -2,6 +2,7 @@ import React from "react";
 import FeaturedProperties from "../component/featuredProperties/FeaturedProperties";
 import Featured from "../component/freaturd/Featured";
 import Header from "../component/header/Header";
+import MailList from "../component/mailList/MailList";
 import Navbar from "../component/navbar/Navbar";
 import PropertyList from "../component/propertyList/PropertyList";
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
           <PropertyList/>
           <h1 className={title.h1}>Homes guests love</h1>
           <FeaturedProperties/>
+          <MailList/>
         </div>
       </div>
     </>
