@@ -92,7 +92,7 @@ const Header = ({ type }) => {
               Sign in / Register
             </button>
             {/* header search item */}
-            <div className="h-[60px] bg-white flex items-center border-4  border-[#febb02] justify-around rounded-[5px] w-[100%] max-w-5xl absolute bottom-[-25px] pr-0 pl-0 pt-[15px] pb-[10px]">
+            <div className="h-[60px] bg-white flex items-center border-4  border-[#febb02] justify-evenly rounded-[5px]  w-[80%] max-w-5xl absolute bottom-[-25px] pr-0 pl-0 pt-[15px] pb-[10px]">
               {/* search place */}
               <div className="flex items-center gap-[10px]">
                 <FontAwesomeIcon icon={faBed} className="text-[#d3d3d3]" />
