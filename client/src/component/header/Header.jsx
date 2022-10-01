@@ -33,12 +33,27 @@ const Header = ({ type }) => {
   });
 
   const navigate = useNavigate();
+
+  const handleOption = (name, operation) => {
+    setOptions((prev) => {
+      return {
+        ...prev,
+        [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
+      };
+    });
+  };
+  const handleSearch = () => {
+    navigate("/hotels", { state: { destination, date, options } });
+  };
   const headerContainer =
     "w-[100%] max-w-6xl bg-[#003580] p-4 mt-[20px] mb-[100px]";
   const headerContainerListMode =
     " w-[100%] max-w-6xl bg-[#003580] p-4 mt-[20px]";
+
+
   return (
     <div className="bg-[#003580]   flex  justify-center text-white relative">
+      {/* header icons */}
       <div
         className={type === "list" ? headerContainerListMode : headerContainer}
       >
@@ -64,6 +79,7 @@ const Header = ({ type }) => {
             <span>Airport taxis</span>
           </div>
         </div>
+        {/* header title */}
         {type !== "list" && (
           <>
             <h1 className="text-[40px] font-bold">
@@ -76,7 +92,9 @@ const Header = ({ type }) => {
             <button className="bg-[#0071c2] mt-2 rounded-none font-[500px] cursor-pointer p-[10px]">
               Sign in / Register
             </button>
-            <div className="h-[50px] bg-white flex items-center mt-4 justify-around rounded-[5px] w-[80%] absolute mb-[-25px] pt-[10px] ">
+            {/* header search item */}
+            <div className="h-[60px] bg-white flex items-center border-4  border-[#febb02] justify-around rounded-[5px] w-[75%] absolute bottom-[-25px] pt-[10px]">
+              {/* search place */}
               <div className="flex items-center gap-[10px]">
                 <FontAwesomeIcon icon={faBed} className="text-[#d3d3d3]" />
                 <input
@@ -86,18 +104,22 @@ const Header = ({ type }) => {
                   onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
+              {/* search date */}
               <div className="flex items-center gap-[10px]">
-                  <FontAwesomeIcon
-                    icon={faCalendarDays}
-                    className="text-[#d3d3d3]"
-                  />
-                  <span onClick={() => setOpenDate(!openDate)} className="rounded-none outline-0 text-black">
-                    {`${format(date[0].startDate, "MM/dd/yyyy")}  to  ${format(
-                  date[0].endDate,
-                  "MM/dd/yyyy"
-                )}`}
-                  </span>
-                  {openDate && (
+                <FontAwesomeIcon
+                  icon={faCalendarDays}
+                  className="text-[#d3d3d3]"
+                />
+                <span
+                  onClick={() => setOpenDate(!openDate)}
+                  className="rounded-none outline-0 text-black"
+                >
+                  {`${format(date[0].startDate, "MM/dd/yyyy")}  to  ${format(
+                    date[0].endDate,
+                    "MM/dd/yyyy"
+                  )}`}
+                </span>
+                {openDate && (
                   <DateRange
                     editableDateInputs={true}
                     onChange={(item) => setDate([item.selection])}
@@ -107,16 +129,87 @@ const Header = ({ type }) => {
                     minDate={new Date()}
                   />
                 )}
-                </div>
-                <div className="flex items-center gap-[10px]">
-                  <FontAwesomeIcon icon={faPerson} className="text-[#d3d3d3]" />
-                  <span onClick={() => {}} className="headerSearchText"></span>
-                </div>
-                <div className="flex items-center  gap-[10px]">
-                  <button className="bg-[#0071c2] rounded-none font-[500px] mb-2 cursor-pointer p-[10px]" onClick={() => {}}>
-                    Search
-                  </button>
-                </div>
+              </div>
+              {/* counter */}
+              <div className="flex items-center gap-[10px]">
+                <FontAwesomeIcon icon={faPerson} className="text-[#d3d3d3]" />
+                <span
+                  onClick={() => setOpenOptions(!openOptions)}
+                  className="text-[#d3d3d3] cursor-pointer"
+                >
+                  {`${options.adult} adult · ${options.children} children · ${options.room} room`}
+                </span>
+                {openOptions && (
+                  <div className="z-10 absolute top-[50px] shadow-md rounded-[5px] bg-white text-[#808080] ">
+                    <div className="w-[200px] flex justify-between m-[10px]">
+                      <span className="">Adult</span>
+                      <div className="flex items-center text-xs text-black gap-[10px] ">
+                        <button
+                          onClick={() => handleOption("adult", "d")}
+                          disabled={options.adult <= 1}
+                          className="w-[30px] h-[30px] border-2 cursor-pointer bg-white text-[#0071c2] border-indigo-500/100"
+                        >
+                          -
+                        </button>
+                        <span className="">{options.adult}</span>
+                        <button
+                          onClick={() => handleOption("adult", "i")}
+                          className="w-[30px] h-[30px] border-2 cursor-pointer bg-white text-[#0071c2] border-indigo-500/100"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div className="w-[200px] flex justify-between m-[10px]">
+                      <span className="">Children</span>
+                      <div className="flex items-center text-xs text-black gap-[10px] ">
+                        <button
+                          onClick={() => handleOption("children", "d")}
+                          disabled={options.Children <= 1}
+                          className="w-[30px] h-[30px] border-2 cursor-pointer bg-white text-[#0071c2] border-indigo-500/100"
+                        >
+                          -
+                        </button>
+                        <span className="">{options.children}</span>
+                        <button
+                          onClick={() => handleOption("children", "i")}
+                          className="w-[30px] h-[30px] border-2 cursor-pointer bg-white text-[#0071c2] border-indigo-500/100"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div className="w-[200px] flex justify-between m-[10px]">
+                      <span className="">Adult</span>
+                      <div className="flex items-center text-xs text-black gap-[10px] ">
+                        <button
+                          onClick={() => handleOption("room", "d")}
+                          disabled={options.room <= 1}
+                          className="w-[30px] h-[30px] border-2 cursor-pointer bg-white text-[#0071c2] border-indigo-500/100"
+                        >
+                          -
+                        </button>
+                        <span className="">{options.room}</span>
+                        <button
+                          onClick={() => handleOption("room", "i")}
+                          className="w-[30px] h-[30px] border-2 cursor-pointer bg-white text-[#0071c2] border-indigo-500/100"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              {/* search button */}
+              <div className="flex items-center  gap-[10px]">
+                <button
+                  className="bg-[#0071c2] rounded-none font-[500px] mb-2 cursor-pointer p-[10px]"
+                  onClick={handleSearch}
+                >
+                  Search
+                </button>
+              </div>
             </div>
           </>
         )}
