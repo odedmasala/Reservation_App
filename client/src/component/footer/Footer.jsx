@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
     const footerStyle ={
-        footer: "w-full  text-xs",
+        footer: "w-full  text-xs max-w-5xl " ,
         footerList :"w-full flex p-3 justify-between mb-[50px]",
         list : "list-none p-0",
         item: "mb-[10px] text-base text-[#003580] cursor-pointer"

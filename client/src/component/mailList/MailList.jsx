@@ -9,7 +9,7 @@ const MailList = () => {
     mailInput:
       "w-[300px] h-[30px] p-[10px] border-none rounded mt-[10px] mr-[10px]",
     mailBtn:
-      "h-[40px] bg-[#0071c2] font-medium border-none rounded cursor-pointer",
+      "h-[40px] bg-[#0071c2] font-medium border-none rounded cursor-pointer pl-[20px] pr-[20px] pt-[10px] pb-[10px]",
   };
   return (
     <div className={stylePage.mailBoxStyle}>
