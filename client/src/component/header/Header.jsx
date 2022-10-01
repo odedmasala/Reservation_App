@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   faBed,
   faCalendarDays,
@@ -46,9 +45,9 @@ const Header = ({ type }) => {
     navigate("/hotels", { state: { destination, date, options } });
   };
   const headerContainer =
-    "w-[100%] max-w-5xl bg-[#003580] p-4 mt-[20px] mb-[100px]";
+    "w-full max-w-5xl bg-[#003580] p-4 mt-[20px] mb-[100px]";
   const headerContainerListMode =
-    " w-[100%] max-w-5xl bg-[#003580] p-4 mt-[20px]";
+    " w-full max-w-5xl bg-[#003580] p-4 mt-[20px]";
 
 
   return (
@@ -93,7 +92,7 @@ const Header = ({ type }) => {
               Sign in / Register
             </button>
             {/* header search item */}
-            <div className="h-[60px] bg-white flex items-center border-4  border-[#febb02] justify-around rounded-[5px] w-[75%] absolute bottom-[-25px] pt-[10px]">
+            <div className="h-[60px] bg-white flex items-center border-4  border-[#febb02] justify-around rounded-[5px] w-[100%] max-w-5xl absolute bottom-[-25px] pr-0 pl-0 pt-[15px] pb-[10px]">
               {/* search place */}
               <div className="flex items-center gap-[10px]">
                 <FontAwesomeIcon icon={faBed} className="text-[#d3d3d3]" />

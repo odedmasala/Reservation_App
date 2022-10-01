@@ -5,7 +5,7 @@ const MailList = () => {
     spanStyle: " text-xl",
     title: "text-5xl text-white",
     mailBoxStyle:
-      "w-full mt-[50px] bg-[#003580] text-white flex flex-col items-center gap-[20px]",
+      "w-full mt-[50px] bg-[#003580] pb-[8px] text-white flex flex-col items-center gap-[20px]",
     mailInput:
       "w-[300px] h-[30px] p-[10px] border-none rounded mt-[10px] mr-[10px]",
     mailBtn:
