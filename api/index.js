@@ -1,8 +1,15 @@
-import  express  from "express";
+import express from "express";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+const app = express();
+dotenv.config()
 
-const app = express()
+try {
+    await mongoose.connect(process.env.MONGO);
+  } catch (error) {
+    handleError(error);
+  }
 
-
-app.listen(8000,()=>{
-    console.log("connect to backend")
-})
+app.listen(8000, () => {
+  console.log("connect to backend");
+});
