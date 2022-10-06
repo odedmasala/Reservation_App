@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import cors from "cors"
 import { autRoute, hotelsRoute, usersRoute, roomsRoute } from "./routes/index.js";
 const app = express();
 dotenv.config();
@@ -18,10 +19,12 @@ mongoose.connection.on("disconnected", () => {
   console.log("mongo DB disconnected");
 });
 
-app.use("api/auth", autRoute);
-app.use("api/users", usersRoute);
+app.use(express.json())
+app.use(cors())
+// app.use("api/auth", autRoute);
+// app.use("api/users", usersRoute);
 app.use("api/hotels", hotelsRoute);
-app.use("api/room", roomsRoute);
+// app.use("api/room", roomsRoute);
 
 app.listen(8000, () => {
   connect();
