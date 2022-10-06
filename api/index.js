@@ -26,7 +26,7 @@ mongoose.connection.on("disconnected", () => {
 
 app.use(express.json());
 // app.use(cors())
-// app.use("/api/auth", autRoute);
+app.use("/api/auth", autRoute);
 // app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
 // app.use("/api/room", roomsRoute);
