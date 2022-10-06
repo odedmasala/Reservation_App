@@ -28,9 +28,9 @@ app.use(cookieParser())
 app.use(express.json());
 // app.use(cors())
 app.use("/api/auth", autRoute);
-// app.use("/api/users", usersRoute);
+app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
-// app.use("/api/room", roomsRoute);
+app.use("/api/room", roomsRoute);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
