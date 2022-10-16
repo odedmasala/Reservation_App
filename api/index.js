@@ -19,12 +19,11 @@ const connect = async () => {
     throw error;
   }
 };
-
 mongoose.connection.on("disconnected", () => {
   console.log("mongo DB disconnected");
 });
 
-app.use(cookieParser())
+app.use(cookieParser());
 app.use(express.json());
 // app.use(cors())
 app.use("/api/auth", autRoute);
