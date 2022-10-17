@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import cors from "cors"
 import cookieParser from "cookie-parser"
 import {
   autRoute,
@@ -22,7 +23,8 @@ const connect = async () => {
 mongoose.connection.on("disconnected", () => {
   console.log("mongo DB disconnected");
 });
-
+//middlewares
+app.use(cors())
 app.use(cookieParser());
 app.use(express.json());
 // app.use(cors())
