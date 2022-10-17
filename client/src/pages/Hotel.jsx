@@ -11,9 +11,14 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 const Hotel = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const { data, loading, error } = useFetch(`/hotels/find/${id}`);
 
   const photos = [
     {
@@ -52,12 +57,19 @@ const Hotel = () => {
 
     setSlideNumber(newSlideNumber);
   };
+  const handleClick = () => {
+    if (user) {
+      setOpenModal(true);
+    } else {
+      navigate("/login");
+    }
+  };
   const hotelStyle = {
     hotelContainer: "flex flex-col  items-center mt-5",
-    sliderWrapper:"w-full h-full flex justify-center items-center",
+    sliderWrapper:"w-[100%] h-[100%] flex justify-center items-center",
     hotelWrapper: "w-full max-w-5xl flex flex-col gap-[10px] relative",
     slider:
-    "sticky  top-0 left-0 w-[100vw] h-[100vh] bg-[#0000009c] z-[999] flex items-center justify-center",
+    "sticky  top-[0] left-[0] w-[100vw] h-[98vh] bg-[#0000009c] z-[999] flex items-center",
     sliderImg: "w-4/5 h-[80vh]",
     icons: {
       close:
