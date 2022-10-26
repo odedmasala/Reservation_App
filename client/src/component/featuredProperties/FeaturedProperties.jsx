@@ -4,7 +4,6 @@ import useFetch from "../../hooks/useFetch";
 const FeaturedProperties = () => {
   const { data, loading, error } = useFetch("/hotels?featured=true&limit=4");
   
-  console.log(data);
   const itemStyle = "flex-1 gap-[10px] flex flex-col";
   const imageStyle = "w-full h-[250px] object-cover";
   const titleStyle = {

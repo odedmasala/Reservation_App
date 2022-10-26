@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   faBed,
   faCalendarDays,
@@ -14,11 +14,13 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import {SearchContext} from "../../context/SearchContext"
+
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
@@ -42,8 +44,11 @@ const Header = ({ type }) => {
       };
     });
   };
+
+  const {dispatch} = useContext(SearchContext)
   const handleSearch = () => {
-    navigate("/hotels", { state: { destination, date, options } });
+    dispatch({type:"NEW_SEARCH",payload:{ destination, dates, options } })
+    navigate("/hotels", { state: { destination, dates, options } });
   };
   const headerContainer =
     "w-full max-w-5xl bg-[#003580] p-4 mt-[20px] mb-[100px]";
@@ -114,17 +119,17 @@ const Header = ({ type }) => {
                   onClick={() => setOpenDate(!openDate)}
                   className="rounded-none outline-0 text-black"
                 >
-                  {`${format(date[0].startDate, "MM/dd/yyyy")}  to  ${format(
-                    date[0].endDate,
+                  {`${format(dates[0].startDate, "MM/dd/yyyy")}  to  ${format(
+                    dates[0].endDate,
                     "MM/dd/yyyy"
                   )}`}
                 </span>
                 {openDate && (
                   <DateRange
                     editableDateInputs={true}
-                    onChange={(item) => setDate([item.selection])}
+                    onChange={(item) => setDates([item.selection])}
                     moveRangeOnFirstSelection={false}
-                    ranges={date}
+                    ranges={dates}
                     className="absolute top-[50px] z-10"
                     minDate={new Date()}
                   />
