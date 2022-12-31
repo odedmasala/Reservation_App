@@ -24,13 +24,12 @@ To get started with the Reservation App, you will need to have the following pre
 
 - Node.js
 - npm or yarn
-- MongoDB
 
 You will also need to set up a MongoDB database and set the `MONGO` environment variable in the `api/.env` file to the connection string for your database. You will also need to set the `JWT` environment variable in the `api/.env` file to a secret string for generating JSON Web Tokens.
 
 Once you have these prerequisites installed and the `MONGO` and `JWT` environment variables set, you can follow the steps below to set up the app:
 
-1. Clone the repository to your local machine using `git clone https://github.com/[your-username]/Reservation-App.git`.
+1. Clone the repository to your local machine using `git clone https://github.com/odedmasala/Reservation_App.git`.
 2. Navigate to the `api` directory and install the dependencies using `npm install` or `yarn install`.
 3. Start the `api` server using `npm start` or `yarn start`.
 4. Navigate to the `admin` directory and install the dependencies using `npm install` or `yarn install`.
